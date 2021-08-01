@@ -115,9 +115,11 @@ app.use('/uploads', express.static('./uploads'));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
-
+const Routers = require('./app/routes/routes');
+const HttpException = require('./app/utils/HttpException');
+const errorMiddleware = require('./app/middleware/error.middleware');
 require("./app/routes/user.routes")(app);
-
+app.use('/api', Routers);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
