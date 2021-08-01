@@ -1,10 +1,10 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config()
-const app = express();
 app.use(cors());
 app.options("*", cors());
 app.use(function (req, res, next) {
@@ -32,11 +32,10 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
 const db = require("./app/models");
 const controller = require("./app/controllers/tutorial.controller");
 
-const run = async () => {
+/* const run = async () => {
   const tut1 = await controller.createTutorial({
     title: "Tut#1",
     description: "Tut#1 Description",
@@ -94,13 +93,11 @@ const run = async () => {
   const tutorials = await controller.findAll();
   console.log(">> All tutorials", JSON.stringify(tutorials, null, 2));
 };
-
+ */
 // db.sequelize.sync();
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-  run();
-});
-const db = require("./app/models");
+
+db.sequelize.sync();
+
 
 
 // // drop the table if it already exists
