@@ -19,7 +19,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = require("./user.model.js")(sequelize, Sequelize);
+db.USER = require("./user.model.js")(sequelize, Sequelize);
 //db.comments = require("./comment.model.js")(sequelize, Sequelize);
 
 /* db.tutorials.hasMany(db.comments, { as: "comments" });

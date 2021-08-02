@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-const db = require("./app/models");
-const controller = require("./app/controllers/tutorial.controller");
+//const db = require("./app/models");
+//const controller = require("./app/controllers/tutorial.controller");
 
 /* const run = async () => {
   const tut1 = await controller.createTutorial({
@@ -96,7 +96,7 @@ const controller = require("./app/controllers/tutorial.controller");
  */
 // db.sequelize.sync();
 
-db.sequelize.sync();
+//db.sequelize.sync();
 
 
 
