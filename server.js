@@ -7,6 +7,7 @@ const morgan = require('morgan');
 require('dotenv').config()
 app.use(cors());
 app.options("*", cors());
+require("./app/routes/user.routes")(app);
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -115,8 +116,9 @@ app.get("/", (req, res) => {
 const Routers = require('./app/routes/routes');
 const HttpException = require('./app/utils/HttpException');
 const errorMiddleware = require('./app/middleware/error.middleware');
-require("./app/routes/user.routes")(app);
+
 app.use('/api', Routers);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
